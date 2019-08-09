@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    var movieData= TitleData()
     fun createTextView(TitleData: TitleData, index: Int): TextView {
         val textview = TextView(this)
         textview.textSize = 20f
@@ -53,9 +54,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == ADD_MOVIE_CODE && resultCode == Activity.RESULT_OK) {
-            val movieData = (data?.getSerializableExtra(text_Box.text.toString())) as TitleData
             movieList.add(movieData)
-            populateList(movieList.size - 1)
+            populateList(movieList.size + 1)
         }
 
     }
