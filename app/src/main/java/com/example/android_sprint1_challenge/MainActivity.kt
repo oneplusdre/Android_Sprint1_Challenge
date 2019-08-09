@@ -51,11 +51,13 @@ class MainActivity : AppCompatActivity() {
             movie_list_layout.addView(createTextView(TitleData, index))
         }
     }
+//rememeber to remove the movie from the list when the listview is clicked, so that it's already gone in prep for deletion
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == ADD_MOVIE_CODE && resultCode == Activity.RESULT_OK) {
             movieList.add(movieData)
-            populateList(movieList.size + 1)
+            populateList(movieList.size - 1)
         }
 
     }

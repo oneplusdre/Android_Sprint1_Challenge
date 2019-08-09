@@ -1,15 +1,27 @@
 package com.example.android_sprint1_challenge
 
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.EditText
+
+import android.app.Activity
+import android.content.Intent
+import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_edit.*
+import kotlinx.android.synthetic.main.activity_edit.add_movie_button
+import kotlinx.android.synthetic.main.activity_main.*
 
 
-open class  TitleData : AppCompatActivity() {
+private class  TitleData(var title: String?, var watched: Boolean?) {
 
-    fun getName(): String {
-       var name = text_Box.text.toString()
-        return name
+
+    // need to store movie watched status as well as the name
+    // so two properties, one string and one for boolean
+
 
     }
 
-}
+    fun getTitle() {
+
+        var title: String =
+
+    }
+
