@@ -2,6 +2,7 @@ package com.example.android_sprint1_challenge
 
 import android.app.Activity
 import android.content.Intent
+import android.icu.text.CaseMap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
@@ -52,10 +53,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == ADD_MOVIE_CODE && resultCode == Activity.RESULT_OK) {
-            val movieData = data?.toString() as TitleData
+            val movieData = (data?.getSerializableExtra(text_Box.text.toString())) as TitleData
             movieList.add(movieData)
             populateList(movieList.size - 1)
         }
+
     }
+
+
 }
 
