@@ -4,8 +4,12 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.EditText
 import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_edit.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.add_movie_button
+import kotlinx.android.synthetic.main.activity_main.movie_list_layout
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,11 +33,10 @@ class MainActivity : AppCompatActivity() {
     fun createTextView(TitleData: TitleData, index: Int): TextView {
         val textview = TextView(this)
         textview.textSize = 20f
-        textview.text = com.example.android_sprint1_challenge.TitleData.name
+        textview.text = text_Box.text
 
         textview.setOnClickListener {
             val intent = Intent(this, EditActivity::class.java)
-            intent.putExtra(TitleData.name, com.example.android_sprint1_challenge.TitleData)
             startActivityForResult(intent, ADD_MOVIE_CODE)
         }
 
@@ -43,14 +46,14 @@ class MainActivity : AppCompatActivity() {
     fun populateList(index: Int) {
         movie_list_layout.removeAllViews()
         for (TitleData in movieList) {
-            movie_list_layout.addView(createTextView(com.example.android_sprint1_challenge.TitleData, index))
+            movie_list_layout.addView(createTextView(TitleData, index))
         }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == ADD_MOVIE_CODE && resultCode == Activity.RESULT_OK) {
-            val imageData = data?.getSerializableExtra(TitleData.name) as TitleData
-            movieList.add(imageData)
+            val movieData = data?.toString() as TitleData
+            movieList.add(movieData)
             populateList(movieList.size - 1)
         }
     }
